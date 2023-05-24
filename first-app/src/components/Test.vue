@@ -2,10 +2,13 @@
     <div class="testing">
         <p>{{ msg }}</p>
         <p>{{ write }} Testing</p>
+        <p>{{ gettime }}</p>
         <input v-model="write" placeholder="Write something">
         <button @click="clearInput" class="clearButton">Clear</button> 
         <br>
         <button @click="capitalLetter" class="upperCaseButton">Make Input Capital</button>
+        <br>
+        
     </div>
 </template>
 
@@ -17,8 +20,27 @@ export default {
     data:()=> {
         return{
             msg:"Hello RAJPUT",
-            write:''
+            write:'',
+            gettime:false,
         }
+    },
+    created: function(){
+        console.log("created");
+        // this.gettime=new Date();  //if show date and time 
+        this.gettime=new Date().getFullYear()+"-"+new Date().getMonth()+"-"+new Date().getDate();
+    },
+    mounted: function(){
+        console.log("mounted");
+        // this.gettime=new Date();
+        this.gettime=new Date().getFullYear()+"-"+new Date().getMonth()+"-"+new Date().getDate();
+    },
+    updated: function(){
+        console.log("updated");
+        // this.gettime=new Date();
+    },
+    unmounted: function(){
+        console.log("destroyed");
+        this.gettime=new Date();    
     },
     methods:{
         clearInput(){
@@ -26,7 +48,7 @@ export default {
         },
         capitalLetter(){
             this.write=this.write.toUpperCase();
-        }
+        },
     }
 }
 </script>
