@@ -12,10 +12,11 @@
         <div class="dropdown">
             <span v-bind:style="{color:colorValue.color}" >Select color from dropdown</span>
             <select v-model="colorValue" id="">
-                <option v-bind:value="{color:'red'}">Red</option>
+                <!-- <option v-bind:value="{color:'red'}">Red</option>
                 <option v-bind:value="{color:'blue'}">Blue</option>
                 <option v-bind:value="{color:'yellow'}">Yellow</option>
-                <option v-bind:value="{color:'black'}">Black</option>
+                <option v-bind:value="{color:'black'}">Black</option> -->
+                <option v-for="(item,key) in colorOptions" v-bind:key="key" v-bind:value="{color:item}">{{ item }}</option>
             </select>
         </div>
         
@@ -23,7 +24,6 @@
 </template>
 
 <script>
-// import { defineComponent } from '@vue/composition-api'
 
 export default {
     name:`Test`,
@@ -33,6 +33,7 @@ export default {
             write:'',
             gettime:false,
             isRed:false,
+            colorOptions:["red","blue","yellow","black"],
             colorValue:{
                 color:'red'
             },
