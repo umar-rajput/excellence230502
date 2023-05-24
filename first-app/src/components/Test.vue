@@ -9,7 +9,15 @@
         <br>
         <button @click="capitalLetter" class="upperCaseButton">Make Input Capital</button>
         <br>
-
+        <div class="dropdown">
+            <span v-bind:style="{color:colorValue.color}" >Select color from dropdown</span>
+            <select v-model="colorValue" id="">
+                <option v-bind:value="{color:'red'}">Red</option>
+                <option v-bind:value="{color:'blue'}">Blue</option>
+                <option v-bind:value="{color:'yellow'}">Yellow</option>
+                <option v-bind:value="{color:'black'}">Black</option>
+            </select>
+        </div>
         
     </div>
 </template>
@@ -25,6 +33,9 @@ export default {
             write:'',
             gettime:false,
             isRed:false,
+            colorValue:{
+                color:'red'
+            },
         }
     },
     // created: function(){
@@ -66,5 +77,11 @@ export default {
     }
     .red{
         color:red;
+    }
+    .dropdown{
+        margin-top: 10px;
+    }
+    .dropdown>span{
+        margin-right: 5px;
     }
 </style>
