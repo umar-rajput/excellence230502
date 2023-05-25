@@ -26,7 +26,13 @@
                 <input type="text" v-on:keypress="submit" v-model="name">
             </form>
             <ul>
-                <li v-for="(item,index) in items" v-bind:key="index">{{ item }}</li>
+                <li v-for="(item,index) in items" v-bind:key="index">
+                    <span>{{ item }}</span>
+                    <div class="editDeletelist">
+                        <i class="fa-solid fa-pen-to-square" v-on:click.prevent="editItem(index)"></i>
+                        <i class="fa-solid fa-trash" v-on:click.prevent="deleteItem(index)"></i>
+                    </div>
+                </li>
             </ul>
         </div>
         
@@ -49,6 +55,7 @@ export default {
             },
             name:"",
             items:[],
+            editIndex:false,
         }
     },
     // created: function(){
@@ -78,10 +85,23 @@ export default {
         },
         submit: function(e){
             if(e.keyCode===13){
-                this.items.push(this.name);
-                this.name="";
+                if(this.editIndex){
+                    this.items.splice(this.editIndex,1,this.name);
+                    this.name="";
+                    this.editIndex=-1;
+                } else {
+                    this.items.push(this.name);
+                    this.name="";
+                }
             }
-        }
+        },
+        editItem: function(index){
+            this.editIndex=index;
+            this.name=this.items[index];
+        },
+        deleteItem: function(index){
+            this.items.splice(index,1);
+        },
     }
 }
 </script>
@@ -107,5 +127,11 @@ export default {
         border: 1px solid #000;
         padding: 5px;
         list-style-type: none;
+    }
+    .editDeletelist{
+        float:right
+    }
+    .editDeletelist i{
+        margin-right: 15px;
     }
 </style>
