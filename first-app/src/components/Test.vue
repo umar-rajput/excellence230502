@@ -19,6 +19,16 @@
                 <option v-for="(item,key) in colorOptions" v-bind:key="key" v-bind:value="{color:item}">{{ item }}</option>
             </select>
         </div>
+
+        <div class="addList">
+            <p>Enter the data and hit enter</p>
+            <form v-on:submit.prevent>
+                <input type="text" v-on:keypress="submit" v-model="name">
+            </form>
+            <ul>
+                <li v-for="(item,index) in items" v-bind:key="index">{{ item }}</li>
+            </ul>
+        </div>
         
     </div>
 </template>
@@ -37,6 +47,8 @@ export default {
             colorValue:{
                 color:'red'
             },
+            name:"",
+            items:[],
         }
     },
     // created: function(){
@@ -64,6 +76,12 @@ export default {
         capitalLetter(){
             this.write=this.write.toUpperCase();
         },
+        submit: function(e){
+            if(e.keyCode===13){
+                this.items.push(this.name);
+                this.name="";
+            }
+        }
     }
 }
 </script>
@@ -84,5 +102,10 @@ export default {
     }
     .dropdown>span{
         margin-right: 5px;
+    }
+    .addList li{
+        border: 1px solid #000;
+        padding: 5px;
+        list-style-type: none;
     }
 </style>
