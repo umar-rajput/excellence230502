@@ -38,14 +38,28 @@
             <li v-for="(item,index) in fname" v-bind:key="index">{{ fname }}</li>
             <li v-for="(item,index) in items" v-bind:key="index">{{ items[0] }}</li>
         </ul> -->
+        
+        <!-- create a button component and call 2 times and perform differnt task on both -->
+        <div class="buttons">
+            <BaseButton title="Open alert" :alert="alertMsg"/>
+            <div class="reverseMsg">
+                <input type="text" v-model="msg" placeholder="Write Something.." class="inputField">
+                <BaseButton title="Reverse" :alert="reverseMsg"/>
+                <!-- <BaseButton v-for="post in posts" :key="post.id" :title="posts.title"/> -->
+            </div>
+        </div>
     </div>
 
 </template>
 
 <script>
+import BaseButton from './BaseButton.vue';
 
 export default {
     name:'AssignmentFirst',
+    components:{
+        BaseButton
+    },
     data() {
         return{
             fname:"",
@@ -53,6 +67,7 @@ export default {
             address:"",
             items:[],
             isRed:false,
+            msg:"",
         }
     },
     methods:{
@@ -67,9 +82,16 @@ export default {
         },
         deleteItem: function(index){
             this.items.splice(index,1);
+        },
+        alertMsg: function(){
+            alert('alert msg');
+        },
+        reverseMsg: function(){
+            this.msg=this.msg.split("").reverse().join("");
         }
 
     },
+    
 }
 </script>
 
@@ -90,5 +112,20 @@ export default {
     }
     .red{
         color:red;
+    }
+
+    .baseButton::v-deep .primaryButton{
+        background-color:#5A6268;
+        padding: 10px ;
+        border-radius: 10px;
+    }
+    .reverseMsg{
+        margin: 17px 0px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+    .inputField{
+        border-radius: 5px;
     }
 </style>
