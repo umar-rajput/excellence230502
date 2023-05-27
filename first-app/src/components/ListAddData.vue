@@ -3,7 +3,7 @@
     <div class="ListAddData">
         <div class="addList">
 
-            <FormAddData v-on:submit-item="submit"/>
+            <FormAddData v-on:submit-item="submit" v-bind:edit-index="editIndex" v-bind:name="name" v-on:edit-item="edit"/>
             <ul>
                 <li v-for="(item,index) in items" v-bind:key="index">
                     <span>{{ item }}</span>
@@ -29,20 +29,31 @@ export default {
     },
     data() {
       return{
-        items:[]
+        items:[],
+        name:"",
+        editIndex:-1,
       }  
     },
     methods:{
         submit:function(name){
             this.items.push(name);
+            this.name="";
+        },
+        edit:function(obj){
+            var {name, editIndex}=obj;
+            console.log("actual edit",name,editIndex);
+            this.items.splice(editIndex,1,name);
+            this.name="";
+            this.editIndex= -1;
         },
         editItem:function(index){
+            console.log("edit index");
             this.editIndex=index;
             this.name=this.items[index];
         },
         deleteItem:function(index){
             this.items.splice(index,1);
-        }
+        },
     }
 }
 </script>
