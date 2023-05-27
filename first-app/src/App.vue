@@ -4,7 +4,8 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <Test/> -->
     <!-- <AssignmentFirst/> -->
-    <ListAddData/>
+    <!-- <ListAddData/> -->
+    <Timer/>
   </div>
 </template>
 
@@ -12,7 +13,8 @@
 // import HelloWorld from './components/HelloWorld.vue'
 // import Test from './components/Test.vue'
 // import AssignmentFirst from './components/AssignmentFirst.vue'
-import ListAddData from './components/ListAddData.vue';
+// import ListAddData from './components/ListAddData.vue';
+import Timer from './components/Timer.vue';
 
 export default {
   name: 'App',
@@ -20,7 +22,8 @@ export default {
     // HelloWorld,
     // Test,
     // AssignmentFirst,
-    ListAddData
+    // ListAddData,
+    Timer
   }
 }
 </script>
