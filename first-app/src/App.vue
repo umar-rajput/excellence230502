@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <Test/> -->
     <!-- <AssignmentFirst/> -->
     <!-- <ListAddData/> -->
-    <Timer/>
+    <!-- <Timer/> -->
+    <CCard/>
   </div>
 </template>
 
@@ -14,7 +15,8 @@
 // import Test from './components/Test.vue'
 // import AssignmentFirst from './components/AssignmentFirst.vue'
 // import ListAddData from './components/ListAddData.vue';
-import Timer from './components/Timer.vue';
+// import Timer from './components/Timer.vue';
+import CCard from './components/CCard.vue' 
 
 export default {
   name: 'App',
@@ -23,7 +25,8 @@ export default {
     // Test,
     // AssignmentFirst,
     // ListAddData,
-    Timer
+    // Timer,
+    CCard
   }
 }
 </script>
